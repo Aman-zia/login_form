@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+   
+    
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+  
+
+
+
+
+
+
+
+
+   
+
+
+
+    
+
+    <script>
+        $(document).ready(function () {
+            $("body").css({
+                "background-image": "linear-gradient(to right, rgb(240, 222, 241),#673AB7 )",
+               
+                "display": "flex",
+                "justify-content": "center",
+                " margin-right": "px"
+            })
+
+            $(".box").css({
+                "background-color": "white",
+                "font-size": "100%",
+                "border": "1px solid black",
+                "height": "70%",
+                "width": "20%",
+                "margin": "20px",
+                "padding": "12px",
+                "margin-left": "200px",
+                "margin-top": "100px"
+            })
+
+            $("img").css({
+                "border-radius": "50%",
+                "width": "100%"
+            })
+
+            $(".txt").css({
+                "background-color": "#d3d3d35e",
+                "width": "100%",
+                "height": "30px",
+                "border": "0.5px solid #673AB7",
+                "box-shadow": "5px 10px  #673AB7",
+                "text-color": "#673AB7",
+                "border-color": "#673AB7"
+            })
+
+            $(".btn").css({
+                "display": "flex",
+                "justify-content": "center"
+            })
+
+            $("button").css({
+                "border-radius": "5px",
+                "width": "30%",
+                "height": "30px",
+                "color": "white",
+                "background-color": "#673AB7",
+                "border": "1px solid #673AB7",
+                "text-align": "center"
+            })
+            $(".imgrender").css({
+                "display": "none"
+            })
+            $(".password-strength-indicator").css({
+                "font-size": "15px",
+                "display": "inline-block",
+                "height": "15px",
+                "min-width": "20%",
+                "text-align": "center",
+                "transition": "1s",
+                "margin": "50px 0",
+                "color": "white"
+            })
+
+            $(".con").css({
+                "height": "30px",
+                
+                "width": "100%",
+                "border-radius": "30px",
+                "overflow": "hidden",
+                "textalign": "center"
+            })
+
+
+            $(".pro").css({
+                "height": "100%",
+                
+                "background": "white",
+                "transition": "0.3s",
+                "border-radius": "30px",
+                "text-align": "center",
+            })
+
+
+            $(".input-container").css({
+                "display": "flexbox",
+                
+                "display": "flex",
+                "transition": "0.3s",
+                "width": "100%",
+                "margin-bottom": "15px"
+            })
+
+            $(".icon").css({
+                "padding": "5px",
+                "height":"23px",
+                
+                "background": "#673AB7",
+                "color": "white",
+                "min-width": "50px",
+                "text-align": "center"
+            })
+
+            $(".notifier").css( {
+  "box-shadow":" 0 5px 21px 10px rgba(196, 196, 196, 0.41)",
+  "border": "0.5px solid #fff",
+  "position": "fixed",
+  "top": "-20%",
+  "left": "50%",
+  "transform": "translateX(-50%)",
+  "background": "rgb(103 58 183 / 52%)",
+  "border-radius": "5px",
+  "z-index": "99999",
+})
+$(".notifier p").css( {
+  "margin": "0",
+  "padding": "10px 20px",
+})
+           
+
+  });
+
+    </script>
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <div class="box">
+
+        <div class="notifier">
+            <p>This is a notification</p>
+          </div> 
+        <form id="registration" >
+<!-- onsubmit="return validate()" -->
+            <div>
+                <img  src="man.png" id="id1" onclick="ab()" height="200px" width="150px">
+                <input class="imgrender" type="file" id="file" onchange="preview()">
+            </div>
+
+            
+
+            <div>
+                <label>Name:</label><br />
+                <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                <input class="txt" type="text" placeholder=" Enter your Name" id="name" name="fname"><br /><br />
+                <div id="display_error" class="form-error"></div>
+            </div>
+            </div>
+
+            <div>
+                <label>E-Mail:</label><br />
+                <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input class="txt" type="email" placeholder=" Enter your Email" id="email" name="email"><br /><br />
+                <div id="email_error_message" class="form-error"></div>
+            </div>
+            </div>
+
+            <div>
+                <label>Password:</label><br />
+                <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                <input class="txt" type="password" placeholder=" Enter your password" id="passw"
+                    name="password"><br /><br />
+                <div id="Pass_error_msg" class="form-error">
+                 </div>
+                </div>
+                
+            </div>
+             <div class="con">
+                    <div class="pro"></div>
+                </div>
+                <br/>
+
+            <div class="btn">
+                <button type="button" value="submit" id="sub">Submit</button>
+            </div>
+        
+
+        </form>
+       
+
+
+        <script>
+            $("input").on('keypress',function(){
+                $(".form-error").html("");
+            });
+            $(document).ready(function () {
+                $("#passw").keydown(function () {
+                    console.log($(this).val().length * 10 + "px");
+            let len = $(this).val().length;
+            if (len <= 4) {
+                $(".pro").css({ 'width': `${len * 20}px`, 'background-color': 'red' });
+                $(".pro").html("weak");
+                
+            }
+            else if (len <= 6) {
+                $(".pro").css({ 'width': `${len * 40}px`, 'background-color': '#00FF80' });
+                $(".pro").html("Moderate");
+            }
+            else {
+                $(".pro").css({ 'width': `${len * 50}px`, 'background-color': 'green' });
+                $(".pro").html("Strong ");
+            }
+        });
+
+                $("#sub").click(function () {
+
+                    validate();
+
+                }
+
+                );
+            });
+
+            function ab() {
+        document.getElementById("file").click();
+    }
+    function preview() {
+        document.getElementById('id1').src = URL.createObjectURL(event.target.files[0]);
+    }
+
+   
+
+
+            function validate(){
+                var name1 = $("#name").val().trim();
+                    var email1 = $("#email").val().trim();
+                    var passwd1 = $("#passw").val().trim();
+
+
+
+                  
+
+
+             
+                    if (name1 == "") {
+                        $("#display_error").html("User name can't be empty");
+                        $("#display_error").css("color", "red");
+                        return false;
+                    }
+
+                    if ((name1.length <= 2) || (name1.length >= 30)) {
+                        $("#display_error").html("Enter between 3 to 30 characters");
+                        $("#display_error").css("color", "red");
+                        return false;
+                    }
+
+                    if (email1.trim() == "") {
+                        $("#email_error_message").html("Email cannot be empty");
+                        $("#email_error_message").css("color", "red");
+                        return false;
+                    }
+                    if (email1.indexOf("@") < 0 || email1.indexOf(".") < 0) {
+                        $("#email_error_message").html("write email like 123@gmail.com");
+                        $("#email_error_message").css("color", "red");
+                        return false;
+                    }
+
+
+                    if (passwd1 == "") {
+                        $("#Pass_error_msg").html("password cannot be empty");
+                        $("#Pass_error_msg").css("color", "red");
+                        return false;
+                    }
+
+                    if (passwd1.length < 5) {
+                        $("#Pass_error_msg").html("password length should be greater than 8 character");
+                        $("#Pass_error_msg").css("color", "red");
+                        return false;
+                    }
+
+
+                    $("#passw").keydown(function () {
+                    console.log($(this).val().length * 10 + "px");
+            let len = $(this).val().length;
+            if (len <= 4) {
+                $(".pro").css({ 'width': `${len * 20}px`, 'background-color': 'red' });
+                $(".pro").html("weak");
+                
+            }
+            else if (len <= 7) {
+                $(".pro").css({ 'width': `${len * 40}px`, 'background-color': '#00FF80' });
+                $(".pro").html("Moderate");
+            }
+            else {
+                $(".pro").css({ 'width': `${len * 50}px`, 'background-color': 'green' });
+                $(".pro").html("Strong ");
+            }
+        });
+
+
+                  
+
+
+
+
+                    if (name1 === false && email1 === false  ) {
+              // alert("Please Fill the form Correctly");
+               return true;
+            } else {
+             
+               showNotifier("Registration successfull");
+               return false;
+            }
+            }
+
+            function showNotifier(msg){
+                console.log("IN");
+  $(".notifier p").text(msg);
+  $('.notifier').animate({top: '2%'},600); //2% height  & 600 pop coming down time
+  setTimeout(() => {
+    $('.notifier').animate({top: '-20%'}, 600);  //2% height  & 600 pop going up time
+  }, 2000);  //2000 it will be there for 2000ms
+}
+
+        </script>
+      
+
+    </div>
+
+</body>
+</html>
